@@ -1,0 +1,10 @@
+/* clases */
+.parrafo {
+    color: blue;
+    font-size: 16px;
+}
+/* ID */
+#texto {
+    color: red;
+    font-size: 18px;
+}

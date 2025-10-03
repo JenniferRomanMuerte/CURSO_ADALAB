@@ -1,0 +1,67 @@
+/*
+ 🔹 1. flex-grow
+    Indica cuánto puede crecer un elemento cuando sobra espacio en el contenedor.
+
+    - flex-grow: 0 → no crece nunca, mantiene su tamaño base.
+
+    - flex-grow: 1 → crece para ocupar el espacio libre disponible.
+
+    - flex-grow: 2 → crece el doble que otro elemento con flex-grow: 1.
+
+ 🔹 2. flex-shrink
+    Indica cuánto puede encogerse un elemento cuando no hay espacio suficiente.
+
+    - flex-shrink: 0 → nunca se encoge, puede desbordar.
+
+    - flex-shrink: 1 → sí se encoge para intentar encajar.
+
+    - flex-shrink: 2 → se encoge el doble que otro con 1.
+
+ 🔹 3. flex-basis
+    Es el tamaño base inicial del elemento (como un width inicial dentro de flex).
+    - Puede ser px, %, auto, etc. De esta manera le damos un tamaño inicial fijo
+    - Podemos poner su valor en auto →
+      Respeta el tamaño natural del contenido antes de repartir.
+      Es decir: si una caja tiene un texto largo y otra corto, la larga empieza más grande y luego crece/reduce.
+
+    - Podemos poner su valor en: 0 →
+      Ignora el tamaño natural y reparte todo el espacio.
+
+ 🔹 4. El atajo flex
+
+    Se combina así:
+    flex: grow shrink basis;
+
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%; /* Para que el flex padre ocupe toda la pantalla */
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  padding: 2rem;
+  background-color: grey;
+}
+
+main {
+  flex:  1 1 0; /* 🔑 ocupa todo el espacio libre */
+  background: bisque;
+  padding: 2rem;
+}
+footer {
+  padding: 2rem;
+  background-color: rgb(255, 187, 0);
+}

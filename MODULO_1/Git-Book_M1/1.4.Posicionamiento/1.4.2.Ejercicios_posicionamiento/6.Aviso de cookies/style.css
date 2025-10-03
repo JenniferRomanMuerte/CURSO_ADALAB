@@ -1,0 +1,31 @@
+
+/*
+Colocamos al contenedor padre display flex, para poder posicionar los elementos
+
+Los colocamos en columna
+
+Los colocamos verticalmente empezando por el final
+para que el elemento que nos interesa (que es el último) se quede fijo al final de la página
+
+*/
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.div {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+/*
+Ponemos posición fixed para que se quede anclado a su posicion
+*/
+.ultimo {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  background-color: yellow;
+}

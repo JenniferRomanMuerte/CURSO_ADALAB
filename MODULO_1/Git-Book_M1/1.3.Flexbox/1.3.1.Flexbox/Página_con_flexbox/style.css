@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%; /* Para que el flex padre ocupe toda la pantalla */
+  max-height: 960px;
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  background-color: red;
+}
+
+main {
+  display: flex;
+  background: bisque;
+  height: 50px;
+}
+footer {
+  text-align: center;
+  background-color: green;
+}
+
+/*
+Con la propiedad flex le indicamos le indicamos cómo se reparte el espacio disponible
+(que parte porcentual ocupa en la pantalla)
+En este caso son 3 elementos: 2 aside y 1 article
+- A los aside les asignamos flex: 1 → ocupan 1 parte cada uno
+- Al article le asignamos flex: 2 → ocupa 2 partes
+En total: 1 + 2 + 1 = 4 partes
+Cada aside ocupa 1/4 (25%) y el article 2/4 (50%) del ancho
+*/
+.aside-1,
+.aside-2 {
+  flex: 1;
+  text-align: center;
+}
+.aside-1 {
+  background-color: yellow;
+}
+.aside-2 {
+  background-color: pink;
+}
+.article {
+  flex: 2;
+  background-color: aquamarine;
+  padding-inline: 1rem;
+  /* Lo convierto en flex para poder alinear su contenido,
+  ya que si no son elementos en bloque que no lo permite */
+  display: flex;
+  justify-content: center;    /* centra horizontalmente */
+  align-items: center;        /* centra verticalmente */
+  text-align: justify;        /* hace que las líneas se estiren para ocupar todo el ancho del párrafo */
+}

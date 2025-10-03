@@ -1,0 +1,122 @@
+/*
+
+las propiedades:
+- top
+- left
+- bottom
+- right
+Éstas sirven para mover un elemento, pero sólo funcionan si el elemento tiene asignado un position distinto de static ( es el que viene por defecto)
+position: absolute
+Lo mueve con respecto a su contenedor mas cercano que tenga position distinta de static
+o con respecto al body
+*/
+
+/*
+postion: sticky
+Lo usamos para que un elemento se quede fijo en la página aunque hagamos scroll
+Hay que asignarle siempre el valor de donde queramos que se posicione
+Se usa mucho para cabeceras
+Con este tipo de posicionamiento al hacer scrooll se pierden los amrgenes (A tener en cuenta)
+*/
+
+/*
+postion:fixed
+Se usa para posicionar un elemento con respecto la parte visible del dispositivo
+Y usamos las propiedades top, left, bottom, right para colocarla en la pantalla
+*/
+
+/*
+TRANSFORM
+Sirve para mover un elemento en particular.
+
+translate: mueve el elemento horizontal y verticalmente
+si sólo ponemos un valor lo mueve en el eje  x  (horizontal)
+si ponemos 2 valores el 1º es para el eje x(horizontal) y 2º valor valor para el eje y(vertical)
+
+rotate: parea rotar el elemento sobre sí mismo.
+se le asignan valores en grados (deg)
+
+scale: sirve para hacer zoom en un elemento
+se le asigna un nº
+*/
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #333;
+  color: white;
+}
+
+/*Position sticky*/
+.header {
+  position: sticky; /* Posicion para dejar fijo un elemento*/
+  top: 0; /*Posicionamiento del elemento le decimos que sin margen superior*/
+  margin: 20px;
+  border-bottom: 5px solid darkcyan;
+  background-color: white;
+  color: #333;
+  z-index: 1; /* Le decimos que se coloque por encima de otros elementos*/
+}
+/******************/
+.main {
+  padding: 40px;
+}
+
+/*Position relative y absolute*/
+.container {
+  position: relative; /* Le ponemos relative para que la hija se posicione cont respecto a él*/
+  border: 5px solid green;
+  height: 200px;
+}
+
+.box {
+  border: 5px solid red;
+  width: 125px;
+  height: 125px;
+  position: absolute; /* Le ponemos absolute para que se posicione con respecto al padre*/
+  top: 50px; /*Lo movemos hacia abajo*/
+  left: 150px; /*Lo movemos hacia la derecha*/
+}
+
+/*Position relative y absolute*/
+.img_container {
+  position: relative; /*Contenedor padre que le cambiamos la posicion para que los hijos puedan hacer referencia a él*/
+}
+
+.img_footer {
+  bottom: 10px; /* Valores para moverlo*/
+  left: 10px; /* Valores para moverlo*/
+  position: absolute; /*Contenedor que queremos mover con respecto al padre*/
+  border: 2px solid white;
+  background-color: black;
+  padding: 10px;
+}
+
+/*Position fixed*/
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid white;
+  background-color: aqua;
+  color: black;
+  position: fixed; /*Para colocarla con respecto a la pantalla visible*/
+  /* Valores para colocarlo*/
+  top: 15vh;
+  bottom: 15vh;
+  left: 15vw;
+  right: 15vw;
+  z-index: -1;
+}
+
+/*Propiedades transform*/
+.transform {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  translate: 2px 5px;
+  rotate: 2deg;
+  scale: 1.5;
+}

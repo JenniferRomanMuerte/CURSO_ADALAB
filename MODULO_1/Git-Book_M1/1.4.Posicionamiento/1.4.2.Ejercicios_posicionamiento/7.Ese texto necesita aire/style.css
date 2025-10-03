@@ -1,0 +1,8 @@
+/*
+
+*/
+.text {
+  margin: 0 auto; /*Centramos el texto '0: margén superior e inferior' 'auto: margenes laterales'*/
+  width: 86%; /*ocupa el 86% del contedor padre ( en este caso el body)*/
+  max-width: 600px; /*Limitamos el ancho de la pantalla*/
+}

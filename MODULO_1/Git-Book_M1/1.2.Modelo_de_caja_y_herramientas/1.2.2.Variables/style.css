@@ -1,0 +1,12 @@
+/*Para declarar variables*/
+:root{
+
+    --color-primrary: red;
+    --color-secondary: blue;
+}
+
+/*Para usar las variables*/
+.prueba{
+    background-color: var(--color-primrary);
+    color: var(--color-secondary);
+}

@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --color-text: #d8d8d8;
+  --color-text-bold: #949494;
+}
+
+/*
+El body es el contenedor principal
+- Lo convertimos en flex container en columna (vertical)
+- Gracias a min-height: 100vh, el body mide siempre al menos el alto de la ventana.
+  Así conseguimos que el footer quede abajo aunque haya poco contenido.
+*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*
+Navbar (cabecera de navegación)
+- Flexbox en fila (por defecto) → los hijos se colocan en horizontal
+- justify-content: center + gap: 25rem → centra el contenido y con el gap damos espacio a los dos bloques
+*/
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 25rem;
+  width: 100%;
+  background-color: black;
+  color: var(--color-text);
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 2rem;
+}
+
+/*
+Main (contenido principal)
+- flex: 1 → hace que main se estire y ocupe todo el espacio disponible entre header y footer
+- display: flex + flex-direction: column → organiza los hijos (autor y artículo) en columna
+- max-width: 600px → limita el ancho máximo
+- margin: auto horizontal (0 auto) → centra el main dentro de la página
+*/
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+/*
+Author (autor y fecha)
+- Se colocan en fila porque es un flex container
+- justify-content: space-between → uno queda alineado a la izquierda y el otro a la derecha
+*/
+.author {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 3rem;
+}
+
+.text p {
+  color: var(--color-text-bold);
+  line-height: 1.5;
+  margin-block: 2rem;
+}
+
+/*
+Footer
+- Flex container en fila
+- justify-content: center + gap → centra el bloque con gap damos espacio entre copyright y redes
+- border-top → añade una línea gris arriba
+*/
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 25rem;
+  padding-block: 2rem;
+  border-top: 1px solid #ccc;
+}

@@ -1,0 +1,33 @@
+.main_nav{
+    margin-top: 10px;
+    list-style: none;
+    padding-left: 0;
+    background-color: #13a4a4;
+}
+
+.main_nav_item{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.main_nav_item a{
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+}
+
+/* Pseudo Clase de los elementos a */
+.main_nav_item a:hover{
+    color: red;
+}
+
+.main_nav_item a:active{
+    color: #195faf;
+}
+
+
+/*Pseudo elementos*/
+.main_nav_item a::before{
+    content: "►";
+    margin-right: 5px;
+}

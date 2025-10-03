@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+table{
+    margin: 5rem;
+    width: 80%;
+    border: 1px solid black;
+
+}
+th,td {
+    border: 1px solid grey;
+}
+
+td{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.cabecera, th{
+    font-size: 2.5rem;
+}
+.vacio {
+    background-color: grey;
+}
+.cabecera {
+    background-color: rgb(140, 216, 216);
+}
+.desayunos{
+    background-color: antiquewhite;
+}
+.comidas{
+    background-color: #d7fad7;
+}
+.cenas{
+    background-color: #eed7fa;
+}
+
+
+

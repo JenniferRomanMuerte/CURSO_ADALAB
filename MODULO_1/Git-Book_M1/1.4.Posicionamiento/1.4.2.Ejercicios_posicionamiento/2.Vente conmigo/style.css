@@ -1,0 +1,16 @@
+
+
+.cabecera{
+    background-color: blueviolet;
+    position: fixed; /* Posicionamiento para que se quede siempre fija arriba*/
+    width: 100%;
+    z-index: 1; /* Hace que se vea encima del demás contendio que por defecto tiene z-index:0*/
+}
+
+.container{
+    /*
+    Se posiciona seguido del elemento de la cabecera
+    porque 'cabecera' es el 1º elemento sin position static
+    */
+    position:absolute;
+}

@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contenido{
+    position:relative;
+    top: 150px;
+    border: 2px solid grey;
+    border-radius: 50px;
+    background-color: lightgrey;
+    width: 600px;
+    margin: auto;
+}
+
+.contenido p{
+    padding:50px;
+}
+
+.ejemplo{
+    position: absolute;
+    top: -25px;
+    left: 200px;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 200px;
+
+}
+
+.ejemplo p{
+    text-align: center;
+    padding: 20px;
+}

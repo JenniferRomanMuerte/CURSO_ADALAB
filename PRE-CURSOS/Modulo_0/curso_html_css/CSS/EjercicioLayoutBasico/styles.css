@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.nav {
+  background-color: rgb(2, 63, 87);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 25vh;
+}
+
+.nav ul {
+  margin-top: 5rem;
+
+}
+.nav li {
+  display: inline-block;
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo {
+  margin: 2rem;
+  width: 10rem;
+  height: 10rem;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.main-content {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.main-section{
+  flex-grow: 1;
+}
+.main-section h1{
+  font-size: 4rem;
+  margin: 2rem;
+  text-align: center;
+
+}
+
+.sidebar {
+  background-color: lightseagreen;
+  width: 25rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.foto-perfil {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.sidebar img {
+  width: 95%;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid rgb(61, 63, 61);
+}
+
+.footer{
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: rgb(2, 63, 87);
+  color: white;
+}
+
+.redes-sociales a{
+  padding-right:2rem;
+  padding-left:2rem;
+}

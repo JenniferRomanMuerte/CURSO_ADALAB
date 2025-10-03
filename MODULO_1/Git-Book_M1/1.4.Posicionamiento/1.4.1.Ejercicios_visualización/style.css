@@ -1,0 +1,40 @@
+
+/*Lista de elem,entos en linea*/
+.menu {
+  display: flex;
+  gap: 12px;
+  list-style: none; /* Para quitar los puntos de la lista*/
+}
+
+/*Formulario con span*/
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/*Contenedor con etiqueta  <pre>*/
+.calidad {
+  display: flex;
+  align-items: center;
+}
+
+/*Tabla sin etiqueta tabla*/
+/* Ha cada elemento de la tabla hay que asignarle su display*/
+.table {
+  display: table; /* Para el span que envuelve todo*/
+  flex-direction: column;
+}
+
+.cabecera {
+  display: table-header-group; /* Para la fila de cabecera*/
+  font-weight: bold;
+}
+
+.fila {
+  display: table-row; /* Para cada contenedor que envuelve una fila de la tabla*/
+}
+
+.element {
+  display: table-cell; /*Para cada elemento que actua como celda en la tabla*/
+  border: 1px solid black;
+}

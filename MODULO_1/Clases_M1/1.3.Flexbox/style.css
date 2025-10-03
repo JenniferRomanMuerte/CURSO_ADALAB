@@ -1,0 +1,45 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: rgb(85, 85, 85);
+  color: white;
+}
+
+.title {
+  border-bottom: 3px solid darkcyan;
+}
+
+/*
+Contenedor padre le asignamos flex
+*/
+.container {
+  border: 4px solid darkcyan;
+  display: flex;
+  justify-content: space-between; /* Colocación horizontal*/
+  align-items: center; /* Colocación vertical*/
+  padding-inline: 30px;
+  height: 200px;
+}
+
+.child {
+  border: 4px solid palevioletred;
+  width: 120px;
+  height: 120px;
+}
+
+.destacada{
+    background-color: palevioletred;
+    order:-1; /* Le asignamos un nº menor que a las otras para colocarla la 1º*/
+}
+
+/*
+Contenedor padre que le asignamos flex
+*/
+.dog-section {
+  display: flex;
+  justify-content: space-between; /* Colocación horizontal*/
+  margin-inline: 30px;
+}
+

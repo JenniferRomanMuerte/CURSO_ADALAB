@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Modelo caja</title>
+  </head>
+  <body>
+    <main>
+        <!-- Etiqueta mark (subrayado en amarillo) -->
+      <p>
+        esto es un párrafo y lleva la etiqueta mark
+        <mark>esto es la etiqueta mark</mark>
+      </p>
+      <!-- Distintos tipos de displays, probar a cambiar en css-->
+      <div class="displays">Hola</div>
+      <div class="displays">hasta luego</div>
+      <div class="displays">Adiós</div>
+
+      <!-- Imagen en mitad de un párrafo (se comporta como un elemento en linea) -->
+      <p>Esto es un párrafo con <img src="./img/benefit-1.png" alt="Imagen para párrafo"> una imagen dentro</p>
+
+      <!-- Imagen entre 2 párrafos (se comporta como un elemento en bloque) -->
+      <p>Párrafo_1</p>
+      <img src="./img/benefit-1.png" alt="Imagen entre párrafos">
+      <p>Párrafo_2</p>
+
+      <!-- Imagen dentro de un div (Ajustar comportamiento en css) -->
+        <!-- Si asiganmos padding, border, el tamaño que asignemos a estos
+          se suma al tamaño asignado al contenedor -->
+        <!-- Si le añadimos la propiedad box-sizing: border-box
+         ( el tamaño que asignamos al padding, borde... no se suma al contedor si no que se resta) -->
+
+       <div class="contenedor-img">
+        <img src="./img/benefit-1.png" alt="Imagen dentro de un div">
+       </div>
+    </main>
+  </body>
+</html>

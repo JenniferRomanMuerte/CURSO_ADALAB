@@ -1,0 +1,11 @@
+.box {
+  background: red;
+  height: 100px;
+}
+
+/*Si la pantalla mide + de 550 se aplica*/
+@media all and (min-width: 550px) {
+  .box {
+    background: blue;
+  }
+}

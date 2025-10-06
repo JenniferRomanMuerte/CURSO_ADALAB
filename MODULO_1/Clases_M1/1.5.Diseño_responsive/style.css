@@ -1,0 +1,70 @@
+body {
+    background-color: #999;
+    color: white;
+}
+
+.header {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.logo {
+    /* vh vw % */
+    /* %: Va en función del tamaño del contenedor madre */
+    /* vh vw: Va en funcion del tamaño de la ventana del dispositivo */
+    width: 90%;
+    min-width: 200px;
+    max-width: 400px;
+    /* margin / padding */
+}
+
+/*
+Para medidas de funetes o margenes usamos rem o em
+rem coge por referencia el tamaño definiodo en root
+em coge de referencia el tamaño definido en el contenedor padre
+*/
+.article{
+    margin-inline: 0.625 rem;  /* (10px)  Le estamos dando la medida referente al root*/
+    max-width: 600px;
+}
+.highlight{
+    font-size: 1.5rem; /* (24px) El articulo que lleva esta clase le damos la medida referente al root */
+}
+
+/*
+Al resto de titulos y párrafos le estamos dando la medida en em,
+con lo cual toma de referencia al padre (article),
+ que en este caso tenemos definido  0.625 rem (10px)
+ Con lo cual sale más pequeño que el 1º que le asignamos rem que toma de referencia 16px del root
+*/
+.title {
+    font-size: 1.5em;
+}
+.text{
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+
+/*MEDIA QUERIES*/
+/*
+Todos los estilos del mobile van 1º, a lo último del script van los media queries
+y aqui asinamos dentro del selector media las clases con las propiedades que queremnos que cambien.
+Los breakpoint suelen ser:
+ < 480px: Movil pequeño
+ 480 -768 px: Movil Grande
+ 768-1024 px: Tablet
+ > 1024 px: Desktop
+*/
+@media (width>1024px){
+    /*Colocamos la cabecera en fila*/
+    .header{
+        flex-direction: row;
+        justify-content:space-around ;
+    }
+    /* Centramos el contenido de los articulos*/
+    .article{
+        margin-inline: auto;
+    }
+}

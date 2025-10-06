@@ -1,0 +1,17 @@
+body {
+  background-color: red;
+}
+
+/* Tablet */
+@media screen and (min-width: 480px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+  body {
+    background-color: green;
+  }
+}

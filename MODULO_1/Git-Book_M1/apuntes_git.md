@@ -63,6 +63,47 @@ git add -A
 git commit -m "Conflicto resuelto"
 git push
 
+## 6º. CREANDO RAMAS
+
+Para no subir tod@s a la vez nuestro código a la rama main y evitar conflictos existen las ramas.
+Para crear una rama y movernos a ella tenemos dos comandos:
+``` bash
+git branch nombre-de-la-rama
+git checkout nombre-de-la-rama
+
+```
+También tenemos un atajo para crear la rama y cambiarnos a ella directamente:
+``` bash
+git checkout -b nombre-de-la-rama
+
+```
+Para subir nuestros cambios a git-Hub en nuestra rama:
+**git push origin nombre-de-la-rama**
+
+La primera vez usaremos el git push con -u:
+**git push -u origin nombre-de-la-rama**
+
+
+### FUSIONANDO RAMAS
+
+Una vez que hemos terminado el trabajo en nuestra nueva rama y lo hemos subido al servidor remoto, querremos aplicar estos cambios en nuestra rama principal, main.
+
+Para ello nos vamos a la rama de destino (en este caso main) con git checkout main, y escribimos:
+**git merge nombre-de-la-rama**
+
+Esto combinará nuestra versión local de la rama nombre-de-la-rama con la rama donde estemos, en este caso, main. Si todo va bien, combinará las ramas, creará un commit automático y si hacemos git status nos dirá que solo queda hacer un git push origin main.
+
+### REVERTIR COMMIT
+A veces hacemos un commit y luego nos arrepentimos, podemos regresar a la versión anterior.
+
+1º Tenemos que ver los commit que se han hecho, usamos el comando:
+**git log**
+
+2º Identificar el hash de ese commit (es un nº muy largo):
+Ejemplo: e139ca3e275be608eed457ab08395e6347e804bf
+
+3ºRevertimos ese commit con este comando seguido del hash:
+**$ git revert e139ca3e275be608eed457ab08395e6347e804bf**
 
 ## RESUMEN COMANDOS
 
@@ -82,6 +123,22 @@ git push
   **git commit -m "Mensaje explicativo de lo que estamos subiendo"**
 - Subir los cambios a Git-Hub:
   **git push**
-
-
+- Crear una rama
+  **git branch nombre-de-la-rama**
+- Movernos a una rama
+**git checkout nombre-de-la-rama**
+- Crear la rama y cambiarnos a ella directamente
+**git checkout -b nombre-de-la-rama**
+- Para movernos de una rama a otra
+**git checkout -b nombre-de-la-rama**
+- Para subir nuestros cambios a git-Hub en nuestra rama:
+**git push origin nombre-de-la-rama**
+- La primera vez usaremos el git push con -u:
+**git push -u origin nombre-de-la-rama**
+- Fusionar ramas (debemos estar colocadsos en la rama main)
+**git merge nombre-de-la-rama**
+- Ver los commit relaizados:
+**git log**
+- Revertir commit (debemos saber el hash):
+**$ git revert e139ca3e275be608eed457ab08395e6347e804bf**
 

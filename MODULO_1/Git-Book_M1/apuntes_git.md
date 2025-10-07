@@ -121,6 +121,8 @@ Ejemplo: e139ca3e275be608eed457ab08395e6347e804bf
   **git add -A** (Añadimos todos los ficheros en los que hayamso hecho cambios).
 - Para subir los cambios a nuestra área de trabajo:
   **git commit -m "Mensaje explicativo de lo que estamos subiendo"**
+- Corregir un mensaje de commit:
+ **git commit - amed -m "Mensaje explicativo de lo que estamos subiendo"**
 - Subir los cambios a Git-Hub:
   **git push**
 - Crear una rama

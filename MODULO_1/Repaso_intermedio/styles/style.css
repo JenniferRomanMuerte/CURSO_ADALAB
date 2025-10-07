@@ -1,0 +1,110 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  --color-primary: #CC212A;
+  --color-secondary: #fff;
+}
+body{
+  height: 100vh;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.main{
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.text{
+  display: flex;
+  font-size: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-inline: 1rem;
+}
+
+.footer{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: #000;
+  font-size: 2rem;
+}
+
+.container-brand{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  align-items: center;
+  gap: 2rem;
+}
+
+.span{
+  font-size: 4rem;
+  color: var(--color-secondary);
+  background-color:var(--color-primary);
+  display: inline-flex;           /* permite centrar el texto */
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  width: 32px;                   /* tamaño del círculo */
+  height: 32px;
+  border-radius: 50%;            /* hace el círculo */
+  font-weight: bold;
+  margin: 0 10px;                /* separa el círculo de las líneas */
+}
+
+.underline{
+  position: absolute;
+  width: 100%;
+  height: 0.3rem;
+  margin-bottom: 4rem;
+  background-color: var(--color-primary);
+  z-index: -1;
+}
+
+
+@media (width > 480px){
+
+  .main{
+    height: 80vh;
+  }
+.footer{
+  flex-direction: column-reverse;
+  gap: 0;
+}
+
+.underline{
+  position: static;
+  margin-bottom: 2rem;
+}
+
+.container-brand{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 3rem;
+  gap: 0rem;
+}
+
+
+}

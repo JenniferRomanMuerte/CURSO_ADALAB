@@ -1,0 +1,21 @@
+@use "../core/mixins" as m;
+
+.main__section--first{
+  height: 50vh;
+   @include m.positionText();
+}
+
+.main__section--second{
+  display: flex;
+  gap: 4rem;
+  & title{
+    color: red;
+  }
+  & button{
+    background-color: red;
+    border-radius: 5px;
+    height: 45px;
+    width: 300px;
+  }
+
+}

@@ -80,7 +80,8 @@ git checkout -b nombre-de-la-rama
 Para subir nuestros cambios a git-Hub en nuestra rama:
 **git push origin nombre-de-la-rama**
 
-La primera vez usaremos el git push con -u:
+Si es la 1º vez que hacemos push en nuestra rama usamos este comando(Sólo la 1º vez),
+asi nos creará la rama en Git-Hub y subirá nuestros cambios a la rama.
 **git push -u origin nombre-de-la-rama**
 
 
@@ -127,19 +128,21 @@ Ejemplo: e139ca3e275be608eed457ab08395e6347e804bf
   **git push**
 - Crear una rama
   **git branch nombre-de-la-rama**
+- Ver las ramas que hay:
+**git branch**
 - Movernos a una rama
 **git checkout nombre-de-la-rama**
 - Crear la rama y cambiarnos a ella directamente
 **git checkout -b nombre-de-la-rama**
 - Para movernos de una rama a otra
 **git checkout -b nombre-de-la-rama**
-- Para subir nuestros cambios a git-Hub en nuestra rama:
+- Para subir nuestros cambios de una rama a git-Hub:
 **git push origin nombre-de-la-rama**
-- La primera vez usaremos el git push con -u:
+- La primera vez que subimos una rama usaremos el git push con -u:
 **git push -u origin nombre-de-la-rama**
 - Fusionar ramas (debemos estar colocadsos en la rama main)
 **git merge nombre-de-la-rama**
-- Ver los commit relaizados:
+- Ver los commit realizados:
 **git log**
 - Revertir commit (debemos saber el hash):
 **$ git revert e139ca3e275be608eed457ab08395e6347e804bf**

@@ -1,0 +1,130 @@
+body {
+  background-color: gray;
+}
+
+/* Al contenedor padre le asignamos el display y el tamaño de las hijas*/
+.container {
+  border: solid 5px white;
+  display: grid;
+  margin-top: 15px;
+  /*
+  Aqui asignamos el nº de columnas que queremos y el tamaño de cada una
+  Podemos mezclar medidas px, %, rem ...
+  y aparte le podemos asignar 1fr (del espacio restante ocupa 1 fracción
+  grid-template-columns: 200px 150px 30% 1fr;
+  */
+
+  /*
+  No se suelen aplicar px a todas porque si le asiganmos medidas fijas y los px de las pantalla
+  son mayores no quedará como queremos
+  */
+
+  /*
+  Se suelen asignar fr que es una fraccion del espacio disponible
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  */
+
+  /*
+  Para no escribir si hay muchos elemento con el mismo tamaño
+  se puede poner asi:
+   grid-template-columns: (7, 1fr);
+  */
+
+  /*
+  Para que aunque haya más elementos, en este caso tenemos 6
+  nos los distribuya en cada columna 4 elementos de 1 fraccion
+  y nos lo repita hasta que coloque todos los elementos
+  */
+  grid-template-columns: repeat(4, 1fr);
+
+  /*
+  También se le puede asignar altura a los elementos aunque no es lo usual
+  esto no se suele usar, pwero si se usa deberiamos dar altura al elemento pasrfe para que funcione correctamente
+  */
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+.box {
+  border: solid 2px palevioletred;
+}
+
+/* PROPIEDADES PARA LAS HIJAS */
+/*
+Podemos asignarle a un elemento en particular
+*/
+.box1 {
+  background-color: blue;
+  /*
+  En este caso le estamos diciendo a ese elento que ocupe 2 fracciones de column y de fila
+  grid-column: span 2;
+  grid-row: span 2;
+  */
+
+  /*
+  En el inspect en html si en la etiqueta del elemento que tenemos asignado grid le pulsamos a grid
+  nos sale como está distribuida la rejilla, los espacios...
+  y ahí podemos mirar para asignarle a un elemento la posicion que queremso que se mueva
+  en este caso le decimos que queremos que se posicione apartir de lka posicion 2 de la rejilla hasta la 4
+  Al igual podemos posicionarla en la fila de misma manera con grid-row, por ejemplo grid-row: 3/5
+  */
+  grid-column: 2 /4;
+}
+
+/* Ejemplo de cómo especificar a cada hijo en particular las rejillas que debe ocupar */
+/*
+Como tenemos 3 columas si le asignamos span 3 ocupará toda la columna
+y los elementos siguientes se van distribuyendo
+*/
+.reasons {
+  display: grid;
+  grid-template-columns: (1fr 1fr 1fr); /* Definimos 3 columnas iguales*/
+}
+
+/* con la propiedad span le indicamos el nº de rejillas que queremos que ocupe*/
+.reasons-title {
+  grid-column: span 3; /* En este caso queremos que ocupe 3*/
+  text-align: center;
+}
+
+.reasons-button {
+  grid-column: span 3; /* En este caso queremos que ocupe 3*/
+  margin: 0 auto;
+}
+
+
+/* GRID AREAS*/
+/*
+Contenedor padre, le tenemos que asignar el nº de columnas que va a tener
+en la propiedad grid-template area
+le damos un nombre para el elemento que queremos que ocupe cada uno de los espacios
+*/
+.grid-areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "content content publi"
+    "footer footer footer";
+}
+
+/* En los contenedores hijos le asignamos el nombre del area que queremos que ocupen*/
+.header {
+  grid-area: header;
+  text-align: center;
+  background-color: beige;
+}
+.content {
+  grid-area: content;
+  text-align: center;
+  background-color: aquamarine;
+}
+.publi {
+  grid-area: publi;
+  text-align: center;
+  background-color: red;
+}
+.footer{
+  grid-area: footer;
+  text-align: center;
+  background-color: greenyellow;
+}

@@ -1,0 +1,60 @@
+.seccion {
+  padding-block:20px;
+  padding-inline: 40px;
+  margin-top: 25px;
+  margin-inline: 15px;
+  border-radius: 5px;
+
+}
+/*De esta manera las medidas de padding, border, margin...
+se suman al tamaño de la caja*/
+.dogs {
+  background-color: #faebd7;
+  /*padding-block:20px;
+  padding-inline: 40px;
+  margin-top: 25px;
+  margin-inline: 15px; */
+}
+
+.cats {
+  border: 10px solid blue;
+  /*padding-block:20px;
+  padding-inline: 40px;
+  margin-top: 25px;
+  margin-inline: 15px; */
+
+}
+
+/*Usando la propiedad box-sizing las medidas de padding, border, margin...
+se restan del tamaño de la caja,
+de esta manera la caja siempre tendrá el mismo contenido
+y las medidas que asignamos al restarlas de la caja hace que en contenido sea más pequeño que el tamaño de la caja,
+ya que el tamaño de la caja se reparte por dentro con todas las medidas que le asignamos */
+.eagles {
+  background-color: #abdecd;
+  /* padding-block:20px;
+  padding-inline: 40px;
+  margin-top: 25px;
+  margin-inline: 15px; */
+  box-sizing: border-box;
+}
+
+.img-pet {
+  /* Medidas en px
+  (Los px son cada punto de los que se compone una pantalla) */
+  width: 300px;
+  height: auto;
+
+  /* Medidas en porcentajes
+  (Ocupan el % del contenedor padre)
+  width: 50%;
+  */
+  /* Medida sobre el ancho de la pantalla
+  ( esto sería como el % sobre el contenedor pero en este caso es sobre la pantalla)
+  width: 50vw;
+  */
+  /* Medida sobre el alto de la pantalla
+  ( esto sería como el % sobre el contenedor pero en este caso es sobre la pantalla)
+  height: 50vh;
+  */
+}

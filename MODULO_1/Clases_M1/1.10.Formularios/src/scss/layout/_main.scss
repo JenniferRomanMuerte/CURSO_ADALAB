@@ -1,0 +1,53 @@
+.form{
+  padding:3rem;
+  display: flex;
+  flex-direction: column;
+  &__fieldset{
+    border: 2px solid #0051ff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+  }
+  &__legend{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0051ff;
+    margin-bottom: 1rem;
+  }
+  &__label{
+    display:block;
+    margin-bottom:1rem;
+    font-weight:bold;
+    margin-top: 2rem;
+    font-size: 2rem;
+    color: #0051ff;
+    &--container--title{
+      display: flex;
+      flex-direction: column;
+      margin-block: 1rem;
+      font-size: 2rem;
+      color: #0051ff;
+    }
+    &--country{
+      margin-top: 1rem;
+      padding: 1rem;
+      font-size: 1.6rem;
+      color:black;
+    }
+  }
+
+  &__button{
+    margin-top: 2rem;
+    background-color: #0051ff;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+  }
+  & input{
+    padding:1rem;
+    & input:invalid{
+      border: 2px solid red;
+    }
+  }
+}

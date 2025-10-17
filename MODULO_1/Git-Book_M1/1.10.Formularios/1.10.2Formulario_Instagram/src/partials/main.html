@@ -1,0 +1,66 @@
+<main class="main">
+  <form class="form" action="" method="post">
+    <input
+      type="email"
+      type="tel"
+      name="email"
+      class="form__input"
+      placeholder="Número de móvil o correo electrónico"
+    />
+    <input
+      type="text"
+      name="name"
+      class="form__input"
+      placeholder="Nombre completo"
+    />
+    <input
+      type="text"
+      name="user"
+      class="form__input"
+      placeholder="Nombre de usuario"
+    />
+    <input
+      type="password"
+      name="password"
+      class="form__input"
+      placeholder="Contraseña"
+    />
+    <input type="hidden" name="browser" class="form__input" value="browser" />
+    <input
+      type="number"
+      min="50"
+      max="250"
+      value="150"
+      name="height"
+      class="form__input"
+      placeholder="Altura en cm"
+    />
+    <textarea
+      type="text-area"
+      name="comment"
+      class="form__input"
+      placeholder="Escribe tu comentario para Instagram"
+       rows="8" cols="80"
+    ></textarea>
+    <input  class="section__button" type="reset" value="Restaurar valores por defecto"/>
+  </form>
+  <section class="section">
+    <p class="section__text">
+      Es posible que los usuarios de neustro servicio hayan subido tu
+      infortmación de contacto en Instagram. <span>Más Informacion.</span>
+    </p>
+    <p class="section__text">
+      Al registrarte, aceptas nuestras <span>Condiciones.</span>, Obtén más
+      información de como recopilamos, usamos y compartimos tu información en la
+      <span>Política de datos,</span> asi como el uso que hacemos de las cookies
+      y tecnologías similares en nuestra <span>Política de cookies.</span>
+    </p>
+    <label for="terms" class="form__label">
+    <input type="checkbox"
+    value="terms">
+    Acepte los términos y condiciones
+    </label>
+    <button class="section__button" disabled>Siguiente</button>
+  </section>
+
+</main>

@@ -1,0 +1,11 @@
+.button{
+  padding: 5px;
+  background-color: aqua;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.opacity{
+  opacity: 0.3;
+}

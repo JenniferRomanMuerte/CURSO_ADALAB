@@ -1,0 +1,23 @@
+.form{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  &__data{
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 1rem;
+    &--label{
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+  &__button{
+    position: absolute;
+    margin-top: 28rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    background-color: black;
+    color:white;
+  }
+}

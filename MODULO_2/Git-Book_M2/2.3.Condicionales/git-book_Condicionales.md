@@ -549,3 +549,131 @@ Hemos preparado un [HTML](https://codepen.io/adalab/pen/xyEwVj) con tres tarjeta
 > **Nota**: con `querySelector` buscamos un elemento dentro de otro. Hasta ahora lo habíamos usado para buscar dentro de `document` (todo nuestro documento HTML), con `document.querySelector()`.
 
 > Si tuviéramos una constante llamada, por ejemplo, `sectionAboutElement` en la que hemos guardado un elemento de HTML, podríamos buscar dentro él otro elemento, tal que así `sectionAboutElement.querySelector()`.
+
+
+# 2.3.4 Switch
+
+> Esta lección es un bonus
+
+Ya sabemos hacer varios **if...else** encadenados para comprobar una condición, y sabemos que si la primera condición es falsa, comprobamos la siguiente, y si esta también es falsa comprobamos la siguiente... hasta que comprobamos una condición que es verdad, o hasta que llegamos hasta el **else** final.
+
+Algunas veces nos encontramos en que todas estas comprobaciones son "parecidas", es decir, **una parte de la comparación es la misma y la otra parte de la comparación cambia**.
+
+En el siguiente ejemplo la parte izquierda de la comparación es la misma, siempre comparamos la constante `todayDate` con otras cosas. La parte derecha de la comparación cambia. Por ejemplo:
+
+```js
+const todayDate = 'Viernes';
+
+if (todayDate === 'Lunes') {
+  console.log('Hoy me tomo un café con Maricarmen');
+} else if (todayDate === 'Martes') {
+  console.log('Bajar al perro');
+} else if (todayDate === 'Miércoles') {
+  console.log('Vamos al cine a ver una peli');
+} else if (todayDate === 'Jueves') {
+  console.log('Juernesss');
+} else if (todayDate === 'Viernes') {
+  console.log('Cumpleaños de Paco');
+} else if (todayDate === 'Sábado') {
+  console.log('Comida con los suegros');
+} else {
+  console.log('Dormir hasta las 12');
+}
+```
+
+Para trabajar con este tipo de condiciones disponemos de la herramienta **switch**. El código anterior con if...else hace lo mismo que el siguiente con switch:
+
+```js
+const todayDate = 'Viernes';
+
+switch (todayDate) {
+  case 'Lunes':
+    console.log('Hoy me tomo un café con Maricarmen');
+    break;
+  case 'Martes':
+    console.log('Bajar al perro');
+    break;
+  case 'Miércoles':
+    console.log('Vamos al cine a ver una peli');
+    break;
+  case 'Jueves':
+    console.log('Juernesss');
+    break;
+  case 'Viernes':
+    console.log('Cumpleaños de Paco');
+    break;
+  case 'Sábado':
+    console.log('Comida con los suegros');
+    break;
+  default:
+    console.log('Dormir hasta las 12');
+}
+```
+
+**Switch es un tipo de condicional**, en el cual:
+
+1. JavaScript obtiene el valor de la variable o constante que pongamos dentro del primer paréntesis. En el ejemplo `switch (todayDate)`, que en este caso es 'Viernes'.
+2. A continuación JavaScript compara este valor con cada uno de los valores de los `case`. Primero con `Lunes`, después con `Martes`...
+3. Cuando el valor comparado `todayDate`, coincida con uno de los valores `case`, en el ejemplo `case 'Viernes'` se ejecutarán las líneas de código que hay desde el `case` hasta el siguiente `break`, en el ejemplo se ejecutará la línea `console.log('Cumpleaños de Paco');`.
+4. Si ninguno de los valores del valor comparado `todayDate` coincide con un valor de `case`, JavaScript ejecutará la acción por defecto, es decir el código que está a continuación de `default`.
+
+Algunas consideraciones:
+
+* JavaScript compara los case en el orden en el que estén escritos.
+* JavaScript solo ejecuta el primer `case` que coincida. Si escribimos más de un `case` que coincida, solo se ejecutará el primero.
+* Entre un `case` y el siguiente `break;` puede haber una línea o las líneas de código que queramos.
+* La opción `default` equivale al último else de un if...else.
+* La opción `default` no es obligatoria.
+* **Al igual que un operador ternario, un switch es un tipo específico de condicional.** Todo operador ternario y todo switch se puede reescribir como la combinación de varios if...else.
+
+**¿Qué tengo que hacer hoy?**
+
+Vamos a practicar un poco, copia el switch de ejemplo que tenemos arriba, mételo en un fichero de JavaScript y ejecútalo para ver qué se muestra en consola.
+
+A continuación cambia el día de la semana para ver qué se pinta en consola. Puedes añadir más *consoles* donde quieras.
+
+### Módulo
+
+El operador de resto (`%`), también llamado operador de módulo (*module*), es un operador especial utilizado en JavaScript para obtener el resto de la división entre dos valores. Si escribimos `5 % 2` en nuestro código, este nos devolverá el resto de esa operación, 1.
+
+```js
+0 % 80; // Devuelve 0
+4 % 5; // Devuelve 4
+13 % 5; // Devuelve 3
+9 % 3; // Devuelve 0
+```
+
+El operador de módulo tiene el mismo orden de ejecución que los operadores de multiplicación y división.
+
+> **Nota**: este operador es muy util para saber si un número es par o impar. Como recordatorio todos los números cuya división entre dos tienen como resto 0 son pares.
+
+### Ejercicios
+
+#### 1. Recomendar de recetas
+
+Haz un programa que te sugiera una receta en función del ingrediente especificado.
+
+1. Los ingredientes disponibles son pollo, merluza o espinacas.
+2. Por defecto si no hay ingrediente pondrá 'Nada en la nevera'.
+3. Según el ingrediente el programa mostrará un mensaje en consola diciéndo el ingrediente que has elegido y con las siguientes sugerencias de receta:
+   * Filete con patatas
+   * Merluzita en salsa verde
+   * Espinacas rehogadas.
+
+Ejemplo: Tu ingrediente es pollo. Puedes freirte un filete con patatas.
+
+```js
+let ingredient = 'Pollo';
+
+// aquí tu código
+```
+
+#### 2. Año bisiesto
+
+Haz un pequeño programa que nos permita saber cuál será el siguiente año bisiesto.
+
+> Los años bisiestos se producen cada cuatro años a partir del año 0. El primer año bisiesto fue 4, el segundo 8 y así progresivamente.
+
+La idea de este ejercicio es que, si estuviésemos en el año 3, al ejecutarlo apareciese en la consola el texto "4", ya que el año 4 sería el siguiente año bisiesto.
+
+**Pista:** Tenemos que escribir el año en el que estamos en una constante.

@@ -1,0 +1,12 @@
+.main{
+  height: 100dvh;
+  background-color: #ffcc00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.title{
+  font-size: 5rem;
+}

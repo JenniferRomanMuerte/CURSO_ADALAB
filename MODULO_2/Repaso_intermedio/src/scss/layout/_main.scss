@@ -1,0 +1,30 @@
+@use "../core/_mixins" as mix;
+
+.main {
+  height: 100dvh;
+  background-color: #ffcc00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__title {
+    font-size: 5rem;
+  }
+  &__options{
+    display: flex;
+    gap:2rem;
+    &--select{
+      @include mix.styleOptions;
+      padding-right: 1.5rem;
+      padding-left: 0.5rem;
+      font-weight: 700;
+    }
+    &--button{
+      @include mix.styleOptions;
+      padding-inline: 1.5rem;
+      color: #fff;
+      background-color: rgb(27, 137, 228);
+      border: none;
+    }
+  }
+}

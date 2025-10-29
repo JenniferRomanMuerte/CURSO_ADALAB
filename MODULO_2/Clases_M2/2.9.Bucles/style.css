@@ -1,0 +1,23 @@
+
+body{
+  background-color: grey;
+  color:white;
+}
+
+.title{
+  border-bottom: 3px solid aqua; ;
+}
+
+.list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-inline: 20px;
+}
+.item{
+  text-align: center;
+  display: inline-block;
+  padding: 2px;
+  border-radius: 4px;
+  border: 2px solid aqua;
+}

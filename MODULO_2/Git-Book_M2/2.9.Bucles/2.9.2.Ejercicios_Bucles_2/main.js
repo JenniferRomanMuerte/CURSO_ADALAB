@@ -116,4 +116,3 @@ items.forEach((item, index) => { // Recorremos el array obteniendo cada elemento
 });
 
 
-//  Usando la consola

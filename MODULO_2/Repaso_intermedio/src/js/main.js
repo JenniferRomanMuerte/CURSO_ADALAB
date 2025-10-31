@@ -2,15 +2,13 @@
 
 const main = document.querySelector('.main');
 const title = document.querySelector('.main__title');
-const selectElement = document.querySelector('.main__options--select');
-const buttonElement = document.querySelector('.main__options--button');
+const selectElement = document.querySelector('.main__form--select');
+const buttonElement = document.querySelector('.main__form--button');
 
 
 const isPar =()=>{
-
-  const randomNumber = Math.floor (Math.random()*101);
-
-  if(randomNumber%2 === 0){
+  const randomNumber = Math.round (Math.random()*101);
+  if(randomNumber % 2 === 0){
     return true;
   }
   else{
@@ -18,12 +16,15 @@ const isPar =()=>{
   }
 }
 
+
 buttonElement.addEventListener('click', (ev)=>{
-  console.log('Entro al evento');
+  ev.preventDefault();
+
   const option = selectElement.value;
-  console.log(option);
   title.innerHTML = option;
+
   const numberRandom = isPar();
+  
   if(numberRandom === true){
     main.style.backgroundColor =' #ffcc00';
   }

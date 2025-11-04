@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peticiones al servidor 2</title>
+  </head>
+  <body>
+    <main class="main">
+      <h1 class="title">Peticiones al servidor 2</h1>
+      <section>
+        <h2 class="starWars">Explorar el API Star Wars</h2>
+        <p>
+          Vamos a explorar un API abierto de información sobre el mundo Star
+          Wars. En esta página tenemos la documentación completa del API y un
+          formulario que nos permite hacer peticiones a la URL que indiquemos.
+          Identifica la siguiente información sobre SWAPI:
+        </p>
+        <h3 class="url">la URL base del API</h3>
+        <p>http swapi.py4e.com/api</p>
+        <h3 class="method">
+          método HTTP que deben usar las peticiones a este API
+        </h3>
+        <p>get</p>
+        <h3 class="Luke-Skywalker">URL para acceder a la info del personaje "Luke Skywalker"</h3>
+        <p>https://swapi.py4e.com/api/people?name="Luke Skywalker"</p>
+        <h3 class="A-New-Hope">URL para acceder a la info de la película "A New Hope"</h3>
+        <p>https://swapi.py4e.com/api/films/?name="A New Hope"</p>
+        <h3 class="resources">a qué otros recursos puedo acceder desde el API además de personajes y pelis</h3>
+        <p>Planetas, especies, estrellas, vehiculos</p>
+        <h3 class="pages">URL para acceder al listado de personajes, ¿está paginada?</h3>
+        <p>Si, 87 por página</p>
+        <h3 class="pages">cómo puedo buscar personajes mediante la URL</h3>
+        <p>https://swapi.py4e.com/api/people?search=Nombre del personaje</p>
+        <h3 class="pages">cómo puedo hacer que el JSON de una petición se me devuelva traducido a Wookiee</h3>
+        <p>https://swapi.py4e.com/api/planets/1/?format=wookiee
+          Seañade en la url de lo que estemos buscando el parámetro ?format=wookiee
+        </p>
+      </section>
+      <section>
+        <h2>2. Buscar un personaje de Star Wars</h2>
+        <form>
+          <input type="text" placeholder="search" class="input-search">
+          <button class="search-btn">Search</button>
+          <ul class="starWars-list"></ul>
+        </form>
+      </section>
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>

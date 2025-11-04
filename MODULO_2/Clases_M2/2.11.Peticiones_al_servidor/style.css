@@ -1,0 +1,27 @@
+.main{
+  background-color: #feffeb;
+  min-height: 100dvh;
+}
+
+.contact_list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2rem;
+  list-style-type: none;
+}
+
+
+.contact{
+  border: 2px solid #57008a;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.contact_title{
+  color:#57008a;
+  text-align: center;
+}

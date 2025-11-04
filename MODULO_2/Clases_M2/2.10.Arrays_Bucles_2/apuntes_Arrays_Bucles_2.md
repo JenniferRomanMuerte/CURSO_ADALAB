@@ -58,9 +58,9 @@ Si el elemento que buscamos no está en el array nos devuelve -1.
 
 Modifica el array original.
 splice(índice donde queremos empezar, cantidad de elementos que queremos quitar);
-splice(2,4); Sería desde la posición 2 me quedo 4 elementos.
-Devuelve un array con los elementnos que hemos quitado del original.
+splice(2,4); Sería desde la posición 2 y borro  4 elementos.
 
+Podemos guardar los elementos que hemos borrado en otro array:
 const arrayRemove = arryOrigin.splice(3,7); Obtenemos los 7 elementos posteriores al indice 3 éste incluido.
 
 Tamién nos sirve para sustituir elementos por otros:

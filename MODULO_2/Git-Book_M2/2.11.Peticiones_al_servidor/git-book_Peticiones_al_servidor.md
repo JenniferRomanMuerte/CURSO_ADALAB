@@ -364,3 +364,5 @@ Por lo tanto, gracias al funcionamiento de las promesas podemos **encadenar llam
 También hemos visto como realizar **llamadas en paralelo** utilizando **`Promise.all`**
 
 Relacionado con los elementos de HTML ya sabemos como leer y modificar los atributos **`src`** y **`alt`** de la etiqueta imagen.
+
+

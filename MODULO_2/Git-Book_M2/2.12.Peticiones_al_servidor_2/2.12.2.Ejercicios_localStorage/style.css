@@ -1,0 +1,12 @@
+.light{
+  background-color: beige;
+  color:black;
+  font-weight: 600;
+}
+
+.dark {
+  background-color: black;
+  color:beige;
+  font-weight: 600;
+
+}

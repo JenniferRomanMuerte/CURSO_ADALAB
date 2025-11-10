@@ -1,0 +1,26 @@
+.divContainer{
+  margin: 5rem auto;
+  width: 20rem;
+  background-color: beige;
+  border-radius: 5px;
+  border: 2px solid black;
+  text-align: center;
+  padding: 10rem;
+  font-size: 2rem;
+}
+
+.hidden{
+  display: none;
+}
+
+.chronometer{
+  width: 5rem;
+  border: 1px solid black;
+  text-align: right;
+  padding: 0.5rem;
+}
+
+.btnAsleep{
+  padding: 2rem;
+  border: 2px solid black;
+}

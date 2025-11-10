@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejercicios DOM</title>
-</head>
-<body>
-  <main class="main">
-    <!--1. 1, 2, 3, lo hacemos otra vez-->
-    <section class="section">
-      <ul class="list"></ul>
-    </section>
-    <!--2. De viaje-->
-    <section class="sectionImg">
-      <form class="formCity">
-        <select name="city" id="city" class="selectCity">
-          <option value="Madrid">Madrid</option>
-          <option value="París">París</option>
-          <option value="Nueva York">Nueva York</option>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Ejercicios DOM</title>
+  </head>
+  <body>
+    <main class="main">
+      <!--1. 1, 2, 3, lo hacemos otra vez-->
+      <section class="section">
+        <h2>1, 2, 3, lo hacemos otra vez</h2>
+        <ul class="list"></ul>
+      </section>
+      <!--2. De viaje-->
+      <section class="sectionImg">
+        <h2>De viaje</h2>
+        <form class="formCity">
+          <label for="city">¿Que ciudad quieres visitar</label>
+          <select name="city" id="city" class="selectCity">
+            <option value="" disabled selected>Select city</option>
+            <option value="Madrid">Madrid</option>
+            <option value="Paris">París</option>
+            <option value="NewYork">Nueva York</option>
+          </select>
+        </form>
+        <article class="containerImgs"></article>
+      </section>
+      <!--3. Autocompletado-->
+      <section class="autocompleted">
+        <select name="person" id="person" class="selectPerson">
+          <option value="" disabled selected>Selecciona una persona</option>
         </select>
-      </form>
-      <article class="containerImg">
-      </article>
-    </section>
-  </main>
-<script src="./main.js"></script>
-</body>
+        <form class="autocompleted__form">
+          <h2>Autocompletado</h2>
+        </form>
+      </section>
+      <!--Castigo-->
+      <section class="punishment"></section>
+    </main>
+    <script src="./main.js"></script>
+  </body>
 </html>

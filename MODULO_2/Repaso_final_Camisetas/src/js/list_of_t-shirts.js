@@ -26,6 +26,7 @@ const paintProducts = (products) => {
     const textAddBasketButton = document.createTextNode('Añadir a la cesta');
     addBasketButton.appendChild(textAddBasketButton);
     addBasketButton.classList.add('section__list--list--li--btn');
+    addBasketButton.dataset.id = product.id;
 
     divImg.appendChild (img);
     li.appendChild (divImg);
@@ -34,12 +35,8 @@ const paintProducts = (products) => {
     li.appendChild (addBasketButton);
 
     list.appendChild(li);
+
+    addBasketButton.addEventListener('click', addingBasket);
   }
 };
 
-fetch("/api/data.json")
-  .then((response) => response.json())
-  .then((data) => {
-    const products = data.cart.items;
-    paintProducts(products);
-  });

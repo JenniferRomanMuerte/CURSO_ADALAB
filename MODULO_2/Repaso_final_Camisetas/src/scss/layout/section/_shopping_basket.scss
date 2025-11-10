@@ -1,0 +1,30 @@
+.section__basketShop{
+  padding:2rem;
+  &--subtitle {
+    font-size: 2rem;
+  }
+  &--table{
+    th{
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding-inline: 0.5rem;
+    }
+    td{
+      text-align: center;
+    }
+  }
+}
+
+.containerQuantity{
+  display:flex;
+  gap:0.5rem;
+  justify-content: center;
+
+}
+
+.buttonsQuantity{
+  padding-inline: 0.3rem;
+  background-color: #6cd6b6;
+  border: none;
+  border-radius: 4px;
+}

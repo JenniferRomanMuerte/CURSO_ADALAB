@@ -63,5 +63,5 @@ splice(2,4); Sería desde la posición 2 y borro  4 elementos.
 Podemos guardar los elementos que hemos borrado en otro array:
 const arrayRemove = arryOrigin.splice(3,7); Obtenemos los 7 elementos posteriores al indice 3 éste incluido.
 
-Tamién nos sirve para sustituir elementos por otros:
+También nos sirve para sustituir elementos por otros:
 splice(2,4,'Limon'); Nos sustituye los 4 elementos desde la posición por Limón

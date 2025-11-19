@@ -12,7 +12,7 @@ Usa programación declarativa.
 ## Cómo trabajar con React
 
 1º.Para poder usar vite en nuestro ordenador:
-npm install -g create-vite
+npm install -g create-vite 
 
 2º. Una vez instalado vite para crear un proyecto:
 create-vite nombre --template vite

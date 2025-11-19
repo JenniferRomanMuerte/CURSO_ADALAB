@@ -1,0 +1,33 @@
+.dark {
+  background-color: gray;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  &__open{
+    width: 3rem;
+    height: 3rem;
+    background-color: aqua;
+    color: black;
+    text-align: center;
+    padding-top: 0.5rem;
+    &--icon{
+      color: black;
+      font-size: 2rem;
+    }
+  }
+  &__container{
+    position: absolute;
+    top: 0;
+    right:0;
+    width: 10rem;
+    height:15rem;
+    background-color: gray;;
+  }
+}

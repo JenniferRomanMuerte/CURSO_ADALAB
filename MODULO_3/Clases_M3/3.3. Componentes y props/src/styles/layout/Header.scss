@@ -1,0 +1,18 @@
+/* Header */
+.header {
+  background-color: var(--color-bg-secondary);
+  padding: var(--spacing-lg);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+
+  & .header__title {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  & .header__subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+  }
+}

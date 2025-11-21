@@ -1,0 +1,22 @@
+@use "./core/Variables" as var;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var.$color_green;
+  width: 3.7rem;
+  height: 3.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  &__menu {
+    width: 1.4rem;
+    height: 1.3rem;
+    background-image: url("../images/ico-menu.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

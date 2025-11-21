@@ -1,0 +1,77 @@
+@use "./core/Variables" as var;
+
+.footer {
+  background-color: var.$color_grey;
+  font-family: var.$font_roboto;
+  font-weight: var.$weight_roboto_regular;
+  color: var.$color_white;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 3.3rem;
+  gap: 2.8rem;
+  position: relative;
+  @media (min-width: var.$media_tablet) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10rem;
+  }
+  &__link {
+    width: 4.5rem;
+    height: 4.5rem;
+    background-image: url("../images/ico-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var.$color_white;
+    border-radius: 50%;
+    padding: 2rem;
+    top: -2rem;
+    position: absolute;
+    /* llamada a la animacion, duracion, para suavizar el movimiento, para repetirla, para que se invierta y dale ese efecto de subir y bajar*/
+    animation: move 1s ease-in-out infinite alternate;
+    /*Para parar la animación cuando se pasa el ratón por encima*/
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    @media (min-width: var.$media_tablet) {
+      align-items: flex-start;
+    }
+    &--link {
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-family: var.$font_roboto;
+      font-weight: var.$weight_roboto_regular;
+      color: var.$color_white;
+    }
+  }
+  &__copyright {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    @media (min-width: var.$media_tablet) {
+      order: -1;
+    }
+  }
+}
+
+.fa-heart {
+  color: var.$color_green;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}

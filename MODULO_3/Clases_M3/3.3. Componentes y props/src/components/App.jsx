@@ -1,7 +1,66 @@
 import "../styles/App.scss";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
+import { useState } from "react";
+import BookItem from "./layout/listing/BookItem";
 function App() {
+  // Definimos una variable de estado para controlar la visibilidad del formulario
+  const [formAddClass, setFormAddClass] = useState("visible");
+  const [formAddVisible, setFormAddVisible] = useState(true);
+  const books = [
+    {
+      title: "Frankenstein",
+      author: "Mary Shelley",
+      year: 1818,
+      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+      read: true,
+    },
+    {
+      title: "El cuento de la criada",
+      author: "Margaret Atwood",
+      year: 1985,
+      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+      read: false,
+    },
+    {
+      title: "Matar a un ruiseñor",
+      author: "Harper Lee",
+      year: 1960,
+      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+      read: true,
+    },
+    {
+      title: "La mano izquierda de la oscuridad",
+      author: "Ursula K. Le Guin",
+      year: 1969,
+      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+      read: false,
+    },
+  ];
+
+  const renderBooks = () => {
+    return books.map((book, index) => {
+      return (
+        <BookItem
+          key={index}
+          title={book.title}
+          author={book.author}
+          year={book.year}
+          image={book.image}
+          read={book.read}
+        />
+      );
+    });
+  };
+
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    if (formAddVisible) {
+      setFormAddVisible(true);
+    } else {
+      setFormAddVisible(false);
+    }
+  };
   return (
     <>
       <Header />
@@ -38,8 +97,10 @@ function App() {
 
         <section className="books">
           <h2 className="books__title">Listado de libros</h2>
-          <button className="btn">+</button>
-          <section className="form">
+          <button className="btn" onClick={handleClick}>
+            +
+          </button>
+          <section className={"form " + (formAddVisible ? "visible" : "")}>
             <form className="form__inputs">
               <div className="form__group">
                 <label htmlFor="new-title" className="form__label">
@@ -124,76 +185,10 @@ function App() {
               </li>
             </section>
           </section>
-          <ul className="books__list">
-            <li className="book book--read">
-              <img
-                src="https://placehold.co/200x300/1a1a2e/eee?text=Libro"
-                alt="Portada del libro Frankenstein"
-                className="book__image"
-              />
-              <div className="book__info">
-                <h3 className="book__title">Frankenstein</h3>
-                <p className="book__author">Mary Shelley</p>
-                <p className="book__year">1818</p>
-                <button className="book__status book__status--read">
-                  Leído
-                </button>
-              </div>
-            </li>
-
-            <li className="book">
-              <img
-                src="https://placehold.co/200x300/1a1a2e/eee?text=Libro"
-                alt="Portada del libro El cuento de la criada"
-                className="book__image"
-              />
-              <div className="book__info">
-                <h3 className="book__title">El cuento de la criada</h3>
-                <p className="book__author">Margaret Atwood</p>
-                <p className="book__year">1985</p>
-                <button className="book__status book__status--pending">
-                  Pendiente
-                </button>
-              </div>
-            </li>
-
-            <li className="book book--read">
-              <img
-                src="https://placehold.co/200x300/1a1a2e/eee?text=Libro"
-                alt="Portada del libro Matar a un ruiseñor"
-                className="book__image"
-              />
-              <div className="book__info">
-                <h3 className="book__title">Matar a un ruiseñor</h3>
-                <p className="book__author">Harper Lee</p>
-                <p className="book__year">1960</p>
-                <button className="book__status book__status--read">
-                  Leído
-                </button>
-              </div>
-            </li>
-
-            <li className="book">
-              <img
-                src="https://placehold.co/200x300/1a1a2e/eee?text=Libro"
-                alt="Portada del libro La mano izquierda de la oscuridad"
-                className="book__image"
-              />
-              <div className="book__info">
-                <h3 className="book__title">
-                  La mano izquierda de la oscuridad
-                </h3>
-                <p className="book__author">Ursula K. Le Guin</p>
-                <p className="book__year">1969</p>
-                <button className="book__status book__status--pending">
-                  Pendiente
-                </button>
-              </div>
-            </li>
-          </ul>
+          <ul className="books__list">{renderBooks()}</ul>
         </section>
       </main>
-     <Footer/>
+      <Footer />
     </>
   );
 }

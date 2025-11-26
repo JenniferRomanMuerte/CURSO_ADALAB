@@ -1,0 +1,25 @@
+.gallery{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  list-style-type:none;
+  width: 80dvh;
+  margin-top: 2rem;
+
+  @media (width>768px) {
+     grid-template-columns: 3fr;
+  }
+}
+
+.flower{
+  border: solid 2px gray;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 15rem;
+  text-align: center;
+  &__image{
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 0.5rem;
+}
+}

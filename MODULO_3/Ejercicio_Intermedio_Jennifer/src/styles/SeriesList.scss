@@ -1,0 +1,29 @@
+.list{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  list-style: none;
+  padding: 2rem;
+  gap: 2rem;
+  &__item{
+    display: flex;
+    flex-direction: column;
+
+    min-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid red;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 2px 5px 10px black;
+    &--title{
+      color: red;
+      padding-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    &--year{
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+    }
+  }
+}

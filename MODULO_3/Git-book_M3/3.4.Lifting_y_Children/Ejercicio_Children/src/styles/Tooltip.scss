@@ -1,0 +1,26 @@
+.Tooltip {
+  position: relative;
+  &__icon {
+    color: white;
+    background-color: rgb(72, 153, 126);
+    padding: 0.3rem 0.6rem;
+    border-radius: 50%;
+    font-weight: bold;
+  }
+  &__container {
+    display: none;
+    position: absolute;
+    top: 0.3rem;
+    left: 2rem;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  &__icon:hover + &__container {
+  
+      display: block;
+
+  }
+}

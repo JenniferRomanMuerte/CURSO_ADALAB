@@ -1,0 +1,12 @@
+.header {
+  background-color: antiquewhite;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 1rem;
+  & a{
+    text-decoration: none;
+    color:black;
+  }
+}

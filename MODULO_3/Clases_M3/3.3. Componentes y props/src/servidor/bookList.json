@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "year": "1818",
+    "image": "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+    "read": true,
+    "genre": "Ciencia ficción"
+  },
+  {
+    "id": 2,
+    "title": "El cuento de la criada",
+    "author": "Margaret Atwood",
+    "year": "1985",
+    "image": "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+    "read": false,
+    "genre": "Ensayo"
+  },
+  {
+    "id": 3,
+    "title": "Matar a un ruiseñor",
+    "author": "Harper Lee",
+    "year": "1960",
+    "image": "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+    "read": true,
+    "genre": "Drama"
+  },
+  {
+    "id": 4,
+    "title": "La mano izquierda de la oscuridad",
+    "author": "Ursula K. Le Guin",
+    "year": "1969",
+    "image": "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
+    "read": false,
+    "genre": "Ciencia ficción"
+  }
+]

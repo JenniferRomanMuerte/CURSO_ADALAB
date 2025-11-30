@@ -1,21 +1,31 @@
 // Fichero src/components/App.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/App.scss";
+import ls from "../services/localStorage";
+
+const allTaks = [
+  { task: "Comprar harina, jamón y pan rallado", completed: true },
+  { task: "Hacer croquetas ricas", completed: true },
+  { task: "Ir a la puerta de un gimnasio", completed: false },
+  {
+    task: "Comerme las croquetas mirando a la gente que entra en el gimnasio",
+    completed: false,
+  },
+];
 
 function App() {
   // Variable de estado de array de objetos con las tareas
-  const [tasks, setTasks] = useState([
-    { task: "Comprar harina, jamón y pan rallado", completed: true },
-    { task: "Hacer croquetas ricas", completed: true },
-    { task: "Ir a la puerta de un gimnasio", completed: false },
-    {
-      task: "Comerme las croquetas mirando a la gente que entra en el gimnasio",
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState(ls.get("data", allTaks));
 
   // Variable de estado para almacenar el valor del input
   const [searchName, setSearchName] = useState("");
+
+  // Variable para almacenar el valor de la nueva tarea
+  const [newTaskInput, setNewTaskInput] = useState("");
+  useEffect(() => {
+    // Guardamos tasks en el local storage
+    ls.set("data", tasks);
+  }, [tasks]);
 
   // Funcion para pintar las tareas
   const renderTasks = () => {
@@ -34,13 +44,19 @@ function App() {
         // Sobre el array obtenido pintamos las tareas, incluyendo el evento en cada li
         .map((task, index) => {
           return (
-            <li
-              id={index}
-              className={task.completed ? "crossedOut" : ""}
-              onClick={handleClick}
-            >
-              {task.task}
-            </li>
+            <div>
+              <li
+                key={index}
+                id={index}
+                className={task.completed ? "crossedOut" : ""}
+                onClick={handleClick}
+              >
+                {task.task}
+              </li>
+              <button id={index} onClick={handleDeleteTask}>
+                🗑️
+              </button>
+            </div>
           );
         })
     );
@@ -64,23 +80,43 @@ function App() {
   const handleSearchName = (ev) => {
     setSearchName(ev.target.value);
   };
+  const handleNewNameTask = (ev) => {
+    setNewTaskInput(ev.target.value);
+  };
+  const handleAddTask = (ev) => {
+    const newTask = {
+      task: newTaskInput,
+      completed: false,
+    };
+    setTasks([...tasks, newTask]);
+    setNewTaskInput("");
+  };
+
+  const handleDeleteTask = (ev) => {
+    const indexBtn = parseInt(ev.target.id);
+    const taskDelete = tasks.filter((task,index)=>index !== indexBtn);
+    setTasks(taskDelete);
+  };
 
   // Funcion para saber las tareas completadas y las que no
   const renderCountTasks = () => {
     // Obtenemos un array nuevo con las tareas completas
-    const tasksCompleted = tasks.filter((task)=>{
+    const tasksCompleted = tasks.filter((task) => {
       return task.completed === true;
-    })
-     // Obtenemos un array nuevo con las tareas  NO completas
-    const tasksInompleted = tasks.filter((task)=>{
+    });
+    // Obtenemos un array nuevo con las tareas  NO completas
+    const tasksInompleted = tasks.filter((task) => {
       return task.completed === false;
-    })
+    });
 
     return (
       <div>
-        <p>Tareas Totales: {tasks.length}</p> {/* Obtenemos el nº total de tareas */}
-        <p>Tareas Totales: {tasksCompleted.length}</p> {/* Obtenemos el nº  de tareas completadas */}
-        <p>Tareas Totales: {tasksInompleted.length}</p> {/* Obtenemos el nº de tareas no coimpletadas */}
+        <p>Tareas Totales: {tasks.length}</p>{" "}
+        {/* Obtenemos el nº total de tareas */}
+        <p>Tareas Totales: {tasksCompleted.length}</p>{" "}
+        {/* Obtenemos el nº  de tareas completadas */}
+        <p>Tareas Totales: {tasksInompleted.length}</p>{" "}
+        {/* Obtenemos el nº de tareas no coimpletadas */}
       </div>
     );
   };
@@ -139,7 +175,18 @@ function App() {
           id="searchName"
           value={searchName}
           onChange={handleSearchName}
+          placeholder="Busca una tarea..."
         />
+        <div>
+          <input
+            type="text"
+            id="addTask"
+            value={newTaskInput}
+            onChange={handleNewNameTask}
+            placeholder="Nombre de la tarea a añadir"
+          />
+          <button onClick={handleAddTask}>Crear Nueva Tarea</button>
+        </div>
         {renderCountTasks()}
       </div>
 

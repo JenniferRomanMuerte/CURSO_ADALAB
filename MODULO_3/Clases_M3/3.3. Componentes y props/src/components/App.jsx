@@ -1,48 +1,67 @@
-import "../styles/App.scss";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import { useState } from "react";
-import BookItem from "./layout/listing/BookItem";
+import BookItem from "./listing/BookItem";
+import AddBook from "./listing/AddBook";
+import "../styles/App.scss";
+import Filter from "./listing/Filter";
+import BookDetails from "./listing/BookDetails";
+
 function App() {
-  // Definimos una variable de estado para controlar la visibilidad del formulario
-  const [formAddClass, setFormAddClass] = useState("visible");
   const [formAddVisible, setFormAddVisible] = useState(true);
-  const books = [
-    {
-      title: "Frankenstein",
-      author: "Mary Shelley",
-      year: 1818,
-      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
-      read: true,
-    },
-    {
-      title: "El cuento de la criada",
-      author: "Margaret Atwood",
-      year: 1985,
-      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
-      read: false,
-    },
-    {
-      title: "Matar a un ruiseñor",
-      author: "Harper Lee",
-      year: 1960,
-      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
-      read: true,
-    },
-    {
-      title: "La mano izquierda de la oscuridad",
-      author: "Ursula K. Le Guin",
-      year: 1969,
-      image: "https://placehold.co/200x300/1a1a2e/eee?text=Libro",
-      read: false,
-    },
-  ];
+  const [allBooks, setAllBooks] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [newBookData, setNewBookData] = useState({});
+
+  // PETICION FETCH CON USEEFFECT
+  useEffect(() => {
+    const dataBooksLocalSorage = localStorage.getItem("dataBooksLocalSorage");
+
+    if (dataBooksLocalSorage) {
+      const dataBooksLocalSorageParse = JSON.parse(dataBooksLocalSorage);
+      setAllBooks(dataBooksLocalSorageParse);
+      setBooks(dataBooksLocalSorageParse);
+    } else {
+      fetch("http://localhost:4000/api/books")
+        .then((res) => res.json())
+        .then((data) => {
+          setAllBooks(data);
+          setBooks(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, []);
+
+  // GUARDAR DATOS EN LOCALSTORAGE CUANDO CAMBIE EL ARRAY DE LIBROS
+  useEffect(() => {
+    localStorage.setItem("dataBooksLocalSorage", JSON.stringify(books));
+  }, [books]);
+
+  const fetchNewBook = () => {
+    fetch("http://localhost:4000/api/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Indicamos que enviamos datos en formato JSON
+      },
+      body: JSON.stringify(newBookData),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setBooks([...books, res.data]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const renderBooks = () => {
-    return books.map((book, index) => {
+    return books.map((book) => {
       return (
         <BookItem
-          key={index}
+          id={book.id}
           title={book.title}
           author={book.author}
           year={book.year}
@@ -53,141 +72,65 @@ function App() {
     });
   };
 
-  const handleClick = (ev) => {
-    ev.preventDefault();
-    if (formAddVisible) {
-      setFormAddVisible(true);
-    } else {
-      setFormAddVisible(false);
-    }
+  const addNewBook = (dataNewBook) => {
+    setNewBookData(dataNewBook);
   };
+
+  const changeFormVisible = () => {
+    setFormAddVisible((prev) => !prev);
+  };
+
+  const showFilterBooks = (property, value) => {
+    if (!value.trim()) {
+      setBooks(allBooks);
+      return;
+    }
+
+    const booksFilter = allBooks.filter((book) =>
+      book[property].toLowerCase().includes(value.toLowerCase())
+    );
+    setBooks([...booksFilter]);
+    renderBooks();
+  };
+
   return (
     <>
       <Header />
-      <main className="main">
-        <section className="filters">
-          <h2 className="filters__title">Filtrar libros</h2>
-          <form className="filters__form">
-            <div className="filters__group">
-              <label htmlFor="filter-title" className="filters__label">
-                Buscar por título
-              </label>
-              <input
-                type="text"
-                id="filter-title"
-                className="filters__input"
-                placeholder="Escribe el título..."
-              />
-            </div>
-            <div className="filters__group">
-              <label htmlFor="filter-genre" className="filters__label">
-                Filtrar por género
-              </label>
-              <select id="filter-genre" className="filters__select">
-                <option value="">Todos los géneros</option>
-                <option value="ficcion">Ficción</option>
-                <option value="ciencia-ficcion">Ciencia Ficción</option>
-                <option value="ensayo">Ensayo</option>
-                <option value="poesia">Poesía</option>
-                <option value="novela">Novela</option>
-              </select>
-            </div>
-          </form>
-        </section>
 
-        <section className="books">
-          <h2 className="books__title">Listado de libros</h2>
-          <button className="btn" onClick={handleClick}>
-            +
-          </button>
-          <section className={"form " + (formAddVisible ? "visible" : "")}>
-            <form className="form__inputs">
-              <div className="form__group">
-                <label htmlFor="new-title" className="form__label">
-                  Título
-                </label>
-                <input
-                  type="text"
-                  id="new-title"
-                  className="form__input"
-                  placeholder="Escribe el título..."
-                />
-              </div>
-              <div className="form__group">
-                <label htmlFor="new-author" className="form__label">
-                  Autora
-                </label>
-                <input
-                  type="text"
-                  id="new-author"
-                  className="form__input"
-                  placeholder="Escribe el nombre de la autora..."
-                />
-              </div>
-              <div className="form__group">
-                <label htmlFor="new-year" className="form__label">
-                  Año de publicación
-                </label>
-                <input
-                  type="number"
-                  min={1440}
-                  max={2025}
-                  id="new-year"
-                  className="form__input"
-                  placeholder="Escribe el año..."
-                />
-              </div>
-              <div className="form__group">
-                <label htmlFor="new-image" className="form__label">
-                  Imagen
-                </label>
-                <input
-                  type="url"
-                  id="new-image"
-                  className="form__input"
-                  placeholder="Escribe la dirección de la imagen de la portada..."
-                />
-              </div>
-              <div className="form__group">
-                <label htmlFor="new-genre" className="form__label">
-                  Género
-                </label>
-                <select id="new-genre" className="form__select">
-                  <option value="">Todos los géneros</option>
-                  <option value="ficcion">Ficción</option>
-                  <option value="ciencia-ficcion">Ciencia Ficción</option>
-                  <option value="ensayo">Ensayo</option>
-                  <option value="poesia">Poesía</option>
-                  <option value="novela">Novela</option>
-                </select>
-              </div>
-              <div className="form__buttons">
-                <button className="btn">Cancelar</button>
-                <button className="btn">Guardar</button>
-              </div>
-            </form>
-            <section className="form__preview">
-              <p className="form__previewText">Así se verá la tarjeta:</p>
-              <li className="book">
-                <img
-                  src="https://placehold.co/200x300/1a1a2e/eee?text=Portada"
-                  alt="Portada del libro Título"
-                  className="book__image"
-                />
-                <div className="book__info">
-                  <h3 className="book__title">El título</h3>
-                  <p className="book__author">La autora</p>
-                  <p className="book__year">El año</p>
-                  <button className="book__status book__status--pending">
-                    Pendiente
-                  </button>
-                </div>
-              </li>
-            </section>
-          </section>
-          <ul className="books__list">{renderBooks()}</ul>
-        </section>
-      </main>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main className="main">
+              <Filter showFilterBooks={showFilterBooks} />
+              <ul className="books__list">{renderBooks()}</ul>
+            </main>
+          }
+        />
+        <Route
+          path="/about-us"
+          element={
+            <div>
+              <h2>Sobre Nosotras</h2>
+            </div>
+          }
+        />
+        <Route
+          path="/add-book"
+          element={
+            <AddBook
+              formAddVisible={formAddVisible}
+              addNewBook={addNewBook}
+              fetchNewBook={fetchNewBook}
+              changeFormVisible={changeFormVisible}
+              newBookData={newBookData}
+            />
+          }
+        />
+
+        <Route path="/book/:id" element={<BookDetails allBooks={allBooks} />} />
+      </Routes>
+
       <Footer />
     </>
   );

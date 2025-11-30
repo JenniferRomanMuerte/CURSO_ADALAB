@@ -94,7 +94,7 @@ function App() {
 
   const handleDeleteTask = (ev) => {
     const indexBtn = parseInt(ev.target.id);
-    const taskDelete = tasks.filter((task,index)=>index !== indexBtn);
+    const taskDelete = tasks.filter((task, index) => index !== indexBtn);
     setTasks(taskDelete);
   };
 
@@ -133,10 +133,7 @@ function App() {
 
   // Creamos un array para almacenar los ingre
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  const isPerson =
-    selectedIngredients.includes("Patatas") &&
-    selectedIngredients.includes("Huevos") &&
-    selectedIngredients.includes("Cebolla");
+  const [isPerson, setIsPerson] = useState(false);
 
   const renderIngredients = () => {
     return ingredients.map((ingredient, index) => {
@@ -147,6 +144,7 @@ function App() {
             name="ingredient"
             value={ingredient}
             onChange={handleIngredientChange}
+            checked={selectedIngredients.includes(ingredient)}
           />
           {ingredient}
         </label>
@@ -155,12 +153,36 @@ function App() {
   };
 
   const handleIngredientChange = (ev) => {
+    let updatedList;
+
     if (ev.target.checked) {
-      setSelectedIngredients([...selectedIngredients, ev.target.value]);
+      updatedList = [...selectedIngredients, ev.target.value];
     } else {
-      setSelectedIngredients(
-        selectedIngredients.filter((item) => item !== ev.target.value)
+      updatedList = selectedIngredients.filter(
+        (item) => item !== ev.target.value
       );
+    }
+
+    setSelectedIngredients(updatedList);
+
+    if (
+      updatedList.includes("Cebolla") &&
+      updatedList.includes("Huevos") &&
+      updatedList.includes("Patatas")
+    ) {
+      setIsPerson(true);
+    } else {
+      setIsPerson(false);
+    }
+  };
+
+  const handleChecked = (ev) => {
+    if (selectedIngredients.length === 0) {
+      setSelectedIngredients([...ingredients]);
+      setIsPerson(true);
+    } else {
+      setSelectedIngredients([]);
+      setIsPerson(false);
     }
   };
 
@@ -201,6 +223,8 @@ function App() {
             <p>Eres un robot sin paladar 🤖</p>
           )}
         </div>
+        <button onClick={handleChecked}>Marcar Todos</button>
+        <button onClick={handleChecked}>Desmarcar Todos</button>
       </div>
     </>
   );

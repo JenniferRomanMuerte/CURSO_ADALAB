@@ -7,6 +7,7 @@ const AddBook = ({
   addNewBook,
   fetchNewBook,
   changeFormVisible,
+  resetNewBook
 }) => {
   const navigate = useNavigate();
   const handleInput = (ev) => {
@@ -27,6 +28,7 @@ const AddBook = ({
     ev.preventDefault();
     addNewBook({}); // vacía newBookData en App
     ev.target.form?.reset(); // limpia los inputs no controlados
+    resetNewBook();
   };
 
   const handleClick = (ev) => {
@@ -51,6 +53,7 @@ const AddBook = ({
               id="title"
               className="form__input"
               placeholder="Escribe el título..."
+              value={newBookData.title}
             />
           </div>
           <div className="form__group">
@@ -62,6 +65,7 @@ const AddBook = ({
               id="author"
               className="form__input"
               placeholder="Escribe el nombre de la autora..."
+              value={newBookData.author}
             />
           </div>
           <div className="form__group">
@@ -75,6 +79,7 @@ const AddBook = ({
               id="year"
               className="form__input"
               placeholder="Escribe el año..."
+              value={newBookData.year}
             />
           </div>
           <div className="form__group">
@@ -86,13 +91,14 @@ const AddBook = ({
               id="image"
               className="form__input"
               placeholder="Escribe la dirección de la imagen de la portada..."
+              value={newBookData.image}
             />
           </div>
           <div className="form__group">
             <label htmlFor="new-genre" className="form__label">
               Género
             </label>
-            <select id="genre" className="form__select">
+            <select id="genre" className="form__select" value={newBookData.genre}>
               <option value="">Todos los géneros</option>
               <option value="ciencia-ficcion">Ciencia Ficción</option>
               <option value="ensayo">Ensayo</option>

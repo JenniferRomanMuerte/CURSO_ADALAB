@@ -12,14 +12,24 @@ function App() {
   const [formAddVisible, setFormAddVisible] = useState(true);
   const [allBooks, setAllBooks] = useState([]);
   const [books, setBooks] = useState([]);
-  const [newBookData, setNewBookData] = useState({});
+  const [newBookData, setNewBookData] = useState({
+      title:"",
+      author:"",
+      year: "",
+      image: "",
+      genre:""
+  });
+  const [filters, setFilters] = useState({
+    title:"",
+    genre: ""
+  })
 
   // PETICION FETCH CON USEEFFECT
   useEffect(() => {
     const dataBooksLocalSorage = localStorage.getItem("dataBooksLocalSorage");
+    const dataBooksLocalSorageParse = dataBooksLocalSorage ? JSON.parse(dataBooksLocalSorage) : null;
+    if (dataBooksLocalSorageParse && dataBooksLocalSorageParse.length) {
 
-    if (dataBooksLocalSorage) {
-      const dataBooksLocalSorageParse = JSON.parse(dataBooksLocalSorage);
       setAllBooks(dataBooksLocalSorageParse);
       setBooks(dataBooksLocalSorageParse);
     } else {
@@ -37,6 +47,7 @@ function App() {
 
   // GUARDAR DATOS EN LOCALSTORAGE CUANDO CAMBIE EL ARRAY DE LIBROS
   useEffect(() => {
+     if (!books.length) return; // Si esta vacio no lo guardamos
     localStorage.setItem("dataBooksLocalSorage", JSON.stringify(books));
   }, [books]);
 
@@ -93,6 +104,21 @@ function App() {
     renderBooks();
   };
 
+  const resetNewBook = () =>{
+    setNewBookData({
+      title:"",
+      author:"",
+      year: "",
+      image: "",
+      genre:""
+    })
+  }
+
+  const handleFilterChange = (property, value) => {
+  setFilters(prev => ({ ...prev, [property]: value }));
+  showFilterBooks(property, value);
+};
+
   return (
     <>
       <Header />
@@ -102,7 +128,7 @@ function App() {
           path="/"
           element={
             <main className="main">
-              <Filter showFilterBooks={showFilterBooks} />
+              <Filter handleFilterChange={handleFilterChange} filters = {filters}/>
               <ul className="books__list">{renderBooks()}</ul>
             </main>
           }
@@ -124,6 +150,7 @@ function App() {
               fetchNewBook={fetchNewBook}
               changeFormVisible={changeFormVisible}
               newBookData={newBookData}
+              resetNewBook={resetNewBook}
             />
           }
         />

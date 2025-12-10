@@ -1,0 +1,180 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #5a6775;
+  --primary: #2f80ed;
+  --border: #dce3ed;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Layout */
+.col2 {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 24px;
+}
+
+@media (max-width: 900px) {
+  .col2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title--big {
+  font-size: 32px;
+  margin: 24px 24px 8px;
+  font-weight: 700;
+}
+
+/* Formularios */
+.form__label {
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.display-block {
+  display: block;
+}
+
+.form__input-text,
+select.form__input-text {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 15px;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 14px;
+}
+
+.form__input-text:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
+}
+
+/* Listado */
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  padding: 12px;
+}
+
+.card__img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card__title {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.card__description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 999;
+}
+
+.modal__dialog {
+  background: var(--card);
+  border-radius: 12px;
+  width: min(520px, 100%);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.modal__content {
+  padding: 20px 24px 24px;
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.modal__close {
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.modal__close:hover {
+  color: var(--primary);
+}
+
+/* Utilidades */
+.ml-1 {
+  margin-left: 8px;
+}
+
+.mt-1 {
+  margin-top: 8px;
+}

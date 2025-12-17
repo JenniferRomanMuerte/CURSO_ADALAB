@@ -43,6 +43,7 @@ function App() {
 
   return (
     <div>
+
       <main className={classMain}>
         <h1>Clase Eventos y Estados</h1>
         <p>PARA MOSTRAR VARIABLES SE METEN ENTRE LLAVES</p>

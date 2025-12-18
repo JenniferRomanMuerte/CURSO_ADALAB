@@ -1,0 +1,24 @@
+[
+  {
+    "id": "100001",
+    "name": "Icíar Bollaín",
+    "birthYear": "1967",
+    "nationality": "España",
+    "notableFilms": ["Te doy mis ojos", "También la lluvia", "Maixabel"]
+  },
+  {
+    "id": "100002",
+    "name": "Pilar Miró",
+    "birthYear": "1940",
+    "deathYear": "1997",
+    "nationality": "España",
+    "notableFilms": ["El perro del hortelano", "El crimen de Cuenca", "Gary Cooper que estás en los cielos"]
+  },
+  {
+    "id": "100003",
+    "name": "Isabel Coixet",
+    "birthYear": "1960",
+    "nationality": "España",
+    "notableFilms": ["Mi vida sin mí", "La vida secreta de las palabras", "La librería"]
+  }
+]

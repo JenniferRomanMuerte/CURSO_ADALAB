@@ -1,0 +1,17 @@
+{
+  "name": "adalab-code",
+  "version": "1.0.0",
+  "description": "Modulo 4. Lección 09 Motores de plantillas. 4.9.1 Motores de plantillas. Ej 1 Crea una plantilla para directoras",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "adalab",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}

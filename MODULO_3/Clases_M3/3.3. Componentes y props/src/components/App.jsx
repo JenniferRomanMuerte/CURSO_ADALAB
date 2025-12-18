@@ -13,23 +13,24 @@ function App() {
   const [allBooks, setAllBooks] = useState([]);
   const [books, setBooks] = useState([]);
   const [newBookData, setNewBookData] = useState({
-      title:"",
-      author:"",
-      year: "",
-      image: "",
-      genre:""
+    title: "",
+    author: "",
+    year: "",
+    image: "",
+    genre: "",
   });
   const [filters, setFilters] = useState({
-    title:"",
-    genre: ""
-  })
+    title: "",
+    genre: "",
+  });
 
   // PETICION FETCH CON USEEFFECT
   useEffect(() => {
     const dataBooksLocalSorage = localStorage.getItem("dataBooksLocalSorage");
-    const dataBooksLocalSorageParse = dataBooksLocalSorage ? JSON.parse(dataBooksLocalSorage) : null;
+    const dataBooksLocalSorageParse = dataBooksLocalSorage
+      ? JSON.parse(dataBooksLocalSorage)
+      : null;
     if (dataBooksLocalSorageParse && dataBooksLocalSorageParse.length) {
-
       setAllBooks(dataBooksLocalSorageParse);
       setBooks(dataBooksLocalSorageParse);
     } else {
@@ -47,7 +48,7 @@ function App() {
 
   // GUARDAR DATOS EN LOCALSTORAGE CUANDO CAMBIE EL ARRAY DE LIBROS
   useEffect(() => {
-     if (!books.length) return; // Si esta vacio no lo guardamos
+    if (!books.length) return; // Si esta vacio no lo guardamos
     localStorage.setItem("dataBooksLocalSorage", JSON.stringify(books));
   }, [books]);
 
@@ -104,35 +105,38 @@ function App() {
     renderBooks();
   };
 
-  const resetNewBook = () =>{
+  const resetNewBook = () => {
     setNewBookData({
-      title:"",
-      author:"",
+      title: "",
+      author: "",
       year: "",
       image: "",
-      genre:""
-    })
-  }
+      genre: "",
+    });
+  };
 
   const handleFilterChange = (property, value) => {
-  setFilters(prev => ({ ...prev, [property]: value }));
-  showFilterBooks(property, value);
-};
+    setFilters((prev) => ({ ...prev, [property]: value }));
+    showFilterBooks(property, value);
+  };
 
   return (
     <>
       <Header />
-
       <Routes>
         <Route
           path="/"
           element={
             <main className="main">
-              <Filter handleFilterChange={handleFilterChange} filters = {filters}/>
+              <Filter
+                handleFilterChange={handleFilterChange}
+                filters={filters}
+              />
               <ul className="books__list">{renderBooks()}</ul>
             </main>
           }
         />
+
         <Route
           path="/about-us"
           element={

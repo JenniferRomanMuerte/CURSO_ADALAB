@@ -1,75 +1,132 @@
 // Importar la biblioteca de Express
-const express = require("express"); // import express from 'express';
 
-// Importar cors
+const express = require("express");
+
+// Importar la biblioteca de CORS
+
 const cors = require("cors");
 
-// Importar path
 const path = require("node:path");
 
-// Importar mysql
-const mySql = require("mysql2/promise");
+// Importar la biblioteca de MySQL
 
-// Creamos una variable con todo lo que puede hacer el servidor:
-const app = express(); // const server = express();
+const mysql = require("mysql2/promise");
 
-// Configuramos el server para aceptar peticiones de otras peticiones
+// Importamos la biblioteca de variables de entorno
+
+require("dotenv").config();
+
+// Crear una variable con todo lo que puede hacer el servidor:
+
+const app = express();
+
+// Configuramos server para que funcione bien como API
+
 app.use(cors());
-
-// Configuramos el servidor para poder recibir y enviar datos en formato Json
 app.use(express.json({ limit: "25Mb" }));
 
-// Servimos el front
-app.use(express.static(path.join(__dirname, "..", "web")));
+// Configuración de MySQL
 
-// Arrancamos el servidor en el puerto 3000:
+const getConnection = async () => {
+  const datosConexion = {
+    host: process.env.MYSQL_HOST || "localhost",
+    port: process.env.MYSQL_PORT || 3306,
+    user: process.env.MYSQL_USER || "root",
+    password: process.env.MYSQL_PASSWORD || "pass",
+    database: process.env.MYSQL_SCHEMA || "animes",
+  };
+
+  const conn = await mysql.createConnection(datosConexion); // Crear la cajita de la conexión en el Workbench
+  await conn.connect(); // Hacer click en la cajita de la conex del Workbench
+
+  return conn;
+};
+
+// Arrancar el servidor en el puerto 3000:
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Uh! El servidor ya está arrancado: <http://localhost:${port}/>`);
 });
 
-/*******************
- * GESTIONAR CONTRASEÑAS
- ******************/
-// Las declaramos en un archivo .env
-// Instalamos la biblioteca dotenv y la importamos
-requiere('dotenv').config();
+// ENDPOINTS PARA LA API
 
-/*******************
- * ESTABLECER CONEXION CON MYSQL
- ******************/
+// GET  /api/animes
 
-// Los datos para la conexion
-const dataConecction = {
-  host: process.env.MYSQL_HOST,
-  port:process.env.MYSQL_PORT,
-  database: "animes",
-  user:process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-};
+app.get("/api/animes", async (req, res) => {
+  const conn = await getConnection();
 
-// Funcion para crear la conexion (es una funcion async)
-const createConexion = async () => {
-  // Creamos la conexion con nuestros datos y esperamos al OK con el await
-  const connection = await mySql.createConnection(dataConecction);
-  // Esperamos a que se conecte
-  await connection.connect();
-  // Devolvemos la conexion pñara poder usarla en oras funciones
-  return connection;
-};
+  let result;
 
+  if (req.query.creadora) {
+    const [rows] = await conn.query(
+      "SELECT * FROM obras WHERE obras.creadora = ?;",
+      [req.query.creadora]
+    );
+    result = rows;
+  } else {
+    const [rows] = await conn.query("SELECT * FROM obras;");
+    result = rows;
+  }
 
-// Endpoint para pedir datos a la BBDD (es async)
-app.get("/api/personajes", async (req, res) => {
-  // Creamos la query
-  const queryPersonage = "select * from personajes";
-  // Obtenemos la conexion
-  const connection = createConexion();
-  // Lanzamos la query (esperamos que nos llegue con el await)
-  //  y la desectructuramos para guardar los resultados
-  const [result] = await connection.query(queryPersonage);
-  // Cerramos la conexion
-  await connection.end();
-  // Devolvemos losm resultados
-  res.json(result);
+  await conn.end();
+
+  res.json({
+    success: true,
+    result,
+  });
 });
+
+// POST /api/animes
+
+app.post("/api/animes", async (req, res) => {
+  console.log("POST /api/animes. Body:", req.body);
+
+  // 1. Conectarse a la base de datos.
+
+  const conn = await getConnection();
+
+  // 2. Preparar sentencia SQL (insert).
+
+  // req.body.titulo = "'); DELETE FROM obras; -- ";  --> SQL injection
+
+  //const insertAnime = `
+  //  INSERT INTO obras (titulo, descripcion)
+  //    VALUES ('${req.body.titulo}', '${req.body.descripcion}');`;
+
+  const insertAnime = `
+    INSERT INTO obras (titulo, descripcion)
+      VALUES (?, ?);`;
+
+  // 3. Lanzar la sentencia SQL y obtener los resultados.
+
+  const [result] = await conn.query(insertAnime, [
+    req.body.titulo,
+    req.body.descripcion,
+  ]);
+
+  // result = {
+  //   "fieldCount": 0,
+  //   "affectedRows": 1,
+  //   "insertId": 16,
+  //   "info": "",
+  //   "serverStatus": 2,
+  //   "warningStatus": 0,
+  //   "changedRows": 0
+  // }
+
+  // 4. Cerrar la conexión con la base de datos.
+
+  await conn.end();
+
+  // 5. Devolver la información.
+
+  res.json({
+    success: true,
+    id: result.insertId,
+  });
+});
+
+// SERVIDOR DE ESTÁTICOS PARA REACT
+
+app.use(express.static(path.join(__dirname, "..", "frontend_static")));
